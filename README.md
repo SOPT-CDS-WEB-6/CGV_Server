@@ -1,2 +1,2 @@
-# Server_CGV
+# CGV_Server
 CGV redesign
