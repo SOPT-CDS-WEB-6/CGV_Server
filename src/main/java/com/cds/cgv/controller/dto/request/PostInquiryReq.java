@@ -1,34 +1,27 @@
 package com.cds.cgv.controller.dto.request;
 
-import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Builder
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @NoArgsConstructor
+@Getter
+@Setter
 public class PostInquiryReq {
-    public PostInquiryReq(int userId, String type, boolean isTheaterSelected, String domestic, String region, String cinemaName, String title, String content) {
-        this.userId = userId;
-        this.type = type;
-        this.isTheaterSelected = isTheaterSelected;
-        this.domestic = domestic;
-        this.region = region;
-        this.cinemaName = cinemaName;
-        this.title = title;
-        this.content = content;
-    }
-    public PostInquiryReq(int userId, String type, boolean isTheaterSelected, String title, String content) {
-        this.userId = userId;
-        this.type = type;
-        this.isTheaterSelected = isTheaterSelected;
-        this.title = title;
-        this.content = content;
-    }
-    private int userId;
+    @NotNull(message = "userNumber은 null일 수 없습니다.")
+    private Long userNumber;
+    @NotBlank(message = "type은 blank일 수 없습니다.")
     private String type;
+    @NotNull(message = "isTheaterSelected는 null일 수 없습니다.")
     private boolean isTheaterSelected;
     private String domestic;
     private String region;
     private String cinemaName;
+    @NotBlank(message = "title은 blank일 수 없습니다.")
     private String title;
+    @NotBlank(message = "content는 blank일 수 없습니다.")
     private String content;
 }

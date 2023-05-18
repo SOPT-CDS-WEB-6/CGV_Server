@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface MovieRepository extends JpaRepository<Movie, Integer> {
+public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     @Override
-    Optional<Movie> findById(Integer integer);
+    Optional<Movie> findById(Long movieNumber);
     @Query("select m from Movie m where m.releasedAt < CURRENT_TIMESTAMP and m.closedAt > CURRENT_TIMESTAMP")
     List<Movie> findMoviesOrderByReservationRate(Pageable pageable);
 }

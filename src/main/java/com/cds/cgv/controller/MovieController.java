@@ -23,7 +23,7 @@ public class MovieController {
      */
     @GetMapping("/{movieNumber}")
     ApiResponseDTO<GetMovieRes> getMovie(
-            @PathVariable Integer movieNumber
+            @PathVariable Long movieNumber
     ){
         return ApiResponseDTO.success(SuccessStatus.GET_SUCCESS, movieProvider.getMovie(movieNumber));
     }

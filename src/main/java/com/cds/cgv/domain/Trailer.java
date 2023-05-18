@@ -1,10 +1,15 @@
 package com.cds.cgv.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "trailer")
+@Getter
+@Setter
 public class Trailer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

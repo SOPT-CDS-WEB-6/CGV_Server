@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -14,9 +14,9 @@ public class GetMovieRes {
     private String title;
     private String originTitle;
     private String posterLink;
-    private float reservation_rate;
-    private float pre_egg;
-    private float golden_egg;
+    private float reservationRate;
+    private float preEgg;
+    private float goldenEgg;
     private String director;
     private String actor;
     private String genre;
@@ -26,5 +26,5 @@ public class GetMovieRes {
     private String synopsis;
     private String releasedAt;
     private String closedAt;
-    private ArrayList<GetTrailerRes> TrailerList;
+    private List<GetTrailerRes> TrailerList;
 }

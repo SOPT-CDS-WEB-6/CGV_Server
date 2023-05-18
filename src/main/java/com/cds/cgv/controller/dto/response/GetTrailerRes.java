@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class GetTrailerRes {
     private Long trailerNumber;
-    private int movieNumber;
+    private Long movieNumber;
     private String trailerTitle;
     private String thumbnailLink;
     private String trailerReleasedAt;

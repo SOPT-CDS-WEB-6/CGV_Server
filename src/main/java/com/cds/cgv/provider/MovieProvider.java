@@ -4,9 +4,12 @@ import com.cds.cgv.common.status.ErrorStatus;
 import com.cds.cgv.controller.dto.response.GetMovieChartRes;
 import com.cds.cgv.controller.dto.response.GetMovieRes;
 import com.cds.cgv.domain.Movie;
+import com.cds.cgv.domain.Trailer;
 import com.cds.cgv.exception.BaseException;
 import com.cds.cgv.infrastructure.MovieRepository;
+import com.cds.cgv.infrastructure.TrailerRepository;
 import com.cds.cgv.util.mapper.MovieMapper;
+import com.cds.cgv.util.mapper.TrailerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -17,11 +20,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MovieProvider {
     private final MovieRepository movieRepository;
-    public GetMovieRes getMovie(Integer movieNumber) {
+    private final TrailerRepository trailerRepository;
+    public GetMovieRes getMovie(Long movieNumber) {
         Movie movie = movieRepository.findById(movieNumber)
                 .orElseThrow(() -> new BaseException(ErrorStatus.INVALID_ID));
+        List<Trailer> trailerList = trailerRepository.findAllByMovieNumber(movieNumber);
 
-        return MovieMapper.INSTANCE.toGetMovieRes(movie);
+        // mapping
+        GetMovieRes getMovieRes = MovieMapper.INSTANCE.toGetMovieRes(movie);
+        getMovieRes.setTrailerList(TrailerMapper.INSTANCE.ToGetTrailerResList(trailerList));
+
+        return getMovieRes;
     }
 
     public List<GetMovieChartRes> getMovieChart() {

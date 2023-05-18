@@ -33,7 +33,9 @@ public class FileService {
         } else if (fileType.equals("trailer-thumbnail")) {
             uploadFilePath += ("movie/" + fileType);
         } else if (fileType.equals("inquiry-attach-file")) {
-            uploadFilePath += (fileType);
+            uploadFilePath += fileType;
+        } else if (fileType.equals("test")) {
+            uploadFilePath += fileType;
         }
         else {
             throw new BaseException(ErrorStatus.INVALID_FILE_TYPE);

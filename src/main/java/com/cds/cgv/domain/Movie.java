@@ -1,18 +1,19 @@
 package com.cds.cgv.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "movie")
-// TODO : 지우셈
 @Getter
+@Setter
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT UNSIGNED")
-    private Integer movieNumber;
+    private Long movieNumber;
     private String title;
     private String originTitle;
     @Column(columnDefinition = "TEXT")
