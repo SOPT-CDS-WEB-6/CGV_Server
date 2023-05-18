@@ -12,7 +12,9 @@ public enum SuccessStatus {
     /*
     event
     */
-    EVENT_SUCCESS(HttpStatus.OK, "이벤트 조회 성공");
+    EVENT_SUCCESS(HttpStatus.OK, "이벤트 조회 성공"),
+    GET_SUCCESS(HttpStatus.OK, "조회 성공"),
+    ;
 
 
     private final HttpStatus httpStatus;
