@@ -20,7 +20,7 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping("/movie/{movieId}/review")
-    public ApiResponseDTO<Page<ReviewResponseWrapper>> getReviews(
+    public ApiResponseDTO<Page<ReviewResponseDTO>> getReviews(
             @PathVariable Long movieId,
             @RequestParam int page,
             @RequestParam int size) {
