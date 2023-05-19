@@ -3,14 +3,10 @@ package com.cds.cgv.controller.dto.response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.List;
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetMovieLogResList {
-    private List<MovieLogRes> page;
-    private PageInfoRes pageInfoRes;
+public class GetReviewPointStatRes {
+    private CharmingPointRes charmingPointRes;
+    private EmotionPointRes emotionPointRes;
 }

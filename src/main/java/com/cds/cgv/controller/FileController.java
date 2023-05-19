@@ -15,6 +15,7 @@ import java.util.List;
 public class FileController {
     private final FileService fileService;
     @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Object> uploadFiles(
             @RequestPart("file") MultipartFile[] multipartFileList,
             @RequestParam String fileType

@@ -3,14 +3,13 @@ package com.cds.cgv.controller.dto.response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.List;
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetMovieLogResList {
-    private List<MovieLogRes> page;
-    private PageInfoRes pageInfoRes;
+public class CharmingPointRes {
+    private float directing;
+    private float story;
+    private float visualBeauty;
+    private float acting;
+    private float ostQuality;
 }

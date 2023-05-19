@@ -1,7 +1,7 @@
 package com.cds.cgv.provider;
 
 import com.cds.cgv.common.status.ErrorStatus;
-import com.cds.cgv.controller.dto.response.GetMovieLogRes;
+import com.cds.cgv.controller.dto.response.MovieLogRes;
 import com.cds.cgv.controller.dto.response.GetMovieLogResList;
 import com.cds.cgv.controller.dto.response.PageInfoRes;
 import com.cds.cgv.domain.Movie;
@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -26,30 +27,38 @@ public class UserProvider {
     private final MovieRepository movieRepository;
     private final ReservationRepository reservationRepository;
 
-    public GetMovieLogResList getMovieLog(Long userNumber, int page, int size) {
+    public GetMovieLogResList getMovieLog(Long userNumber, int page, int size, Integer year) {
         // 유저 id 유효성 확인
         userRepository.findById(userNumber).orElseThrow(
                 () -> new BaseException(ErrorStatus.INVALID_USER_ID)
         );
         // 페이지 가져오기
-        Page<Reservation> reservationPage = reservationRepository
-                .findAllByUserNumber
-                        (PageRequest.of(page-1, size, Sort.by(Sort.Direction.DESC, "startDate")), userNumber);
+        Page<Reservation> reservationPage;
+        // year이 null이 아니면
+        if(!Objects.isNull(year)) {
+            reservationPage = reservationRepository
+                    .findAllByUserNumberByYear
+                            (PageRequest.of(page-1, size, Sort.by(Sort.Direction.DESC, "startDate")), userNumber, year);
+        } else {
+            reservationPage = reservationRepository
+                    .findAllByUserNumber
+                            (PageRequest.of(page-1, size, Sort.by(Sort.Direction.DESC, "startDate")), userNumber);
 
+        }
         // entity to dto 매핑
-        List<GetMovieLogRes> getMovieLogResList = ReservationMapper.INSTANCE.toGetMovieLogResList(reservationPage);
+        List<MovieLogRes> movieLogResList = ReservationMapper.INSTANCE.toGetMovieLogResList(reservationPage);
 
         // 영화정보 매핑
-        for(GetMovieLogRes getMovieLogRes : getMovieLogResList){
-            Movie movie = movieRepository.findById(getMovieLogRes.getMovieNumber())
+        for(MovieLogRes movieLogRes : movieLogResList){
+            Movie movie = movieRepository.findById(movieLogRes.getMovieNumber())
                     .orElseThrow(
                             () -> new BaseException(ErrorStatus.DATABASE_ERROR)
                     );
-            getMovieLogRes.setRestProperties(movie.getTitle(), movie.getOriginTitle(), movie.getPosterLink());
+            movieLogRes.setRestProperties(movie.getTitle(), movie.getOriginTitle(), movie.getPosterLink());
         }
         // response dto로 매핑
         GetMovieLogResList result = new GetMovieLogResList(
-                getMovieLogResList,
+                movieLogResList,
                 new PageInfoRes(page, size, reservationPage.getTotalElements(), reservationPage.getTotalPages()));
 
         return result;

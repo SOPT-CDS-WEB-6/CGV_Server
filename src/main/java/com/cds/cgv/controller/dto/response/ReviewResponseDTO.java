@@ -1,16 +1,12 @@
 package com.cds.cgv.controller.dto.response;
 
 
-import com.cds.cgv.domain.ReviewEntity;
 import com.cds.cgv.domain.ReviewResponseWrapper;
-import com.cds.cgv.domain.ReviewVO;
 import com.cds.cgv.util.DateFormatter;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Builder(access = AccessLevel.PRIVATE)
