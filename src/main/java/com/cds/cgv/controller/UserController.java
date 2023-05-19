@@ -7,6 +7,7 @@ import com.cds.cgv.controller.dto.response.UserResponseDTO;
 import com.cds.cgv.provider.UserProvider;
 import com.cds.cgv.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +18,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/{userNumber}/movielog/watched")
+    @ResponseStatus(HttpStatus.OK)
     ApiResponseDTO<GetMovieLogResList> getMovieLog(
             @PathVariable Long userNumber,
             @RequestParam int page,

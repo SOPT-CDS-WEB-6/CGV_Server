@@ -6,10 +6,8 @@ import com.cds.cgv.controller.dto.response.GetMovieRes;
 import com.cds.cgv.controller.dto.response.GetReviewPointStatRes;
 import com.cds.cgv.provider.MovieProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/movie")
@@ -23,6 +21,7 @@ public class MovieController {
      * @return
      */
     @GetMapping("/{movieNumber}")
+    @ResponseStatus(HttpStatus.OK)
     ApiResponseDTO<GetMovieRes> getMovie(
             @PathVariable Long movieNumber
     ){
@@ -35,6 +34,7 @@ public class MovieController {
      * @return
      */
     @GetMapping("/{movieNumber}/review-statistics/score")
+    @ResponseStatus(HttpStatus.OK)
     ApiResponseDTO<GetReviewPointStatRes> getReviewPointStat(
             @PathVariable Long movieNumber
     ){
