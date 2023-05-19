@@ -19,8 +19,6 @@ public class EventServiceImpl implements EventService {
 
     @Transactional(readOnly = true)
     public List<EventResponseDTO> getEvents() {
-        List <EventEntity> events = eventRepository.findTop4ByOrderByStartedAtDesc();
-        System.out.println("이벤트 리스트" + events);
-        return events.stream().map(EventResponseDTO::from).collect(Collectors.toList());
+        return eventRepository.findTop4ByOrderByStartedAtDesc().stream().map(EventResponseDTO::from).collect(Collectors.toList());
     }
 }
