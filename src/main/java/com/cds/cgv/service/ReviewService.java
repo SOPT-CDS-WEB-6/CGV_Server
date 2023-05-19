@@ -6,5 +6,5 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ReviewService {
-    Page<ReviewResponseWrapper> getReviews(Long movieId, Pageable pageable);
+    Page<ReviewResponseDTO> getReviews(Long movieId, Pageable pageable);
 }
