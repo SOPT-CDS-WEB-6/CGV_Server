@@ -1,6 +1,6 @@
 package com.cds.cgv.util.mapper;
 
-import com.cds.cgv.controller.dto.response.GetMovieLogRes;
+import com.cds.cgv.controller.dto.response.MovieLogRes;
 import com.cds.cgv.domain.Reservation;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
@@ -16,7 +16,7 @@ public interface ReservationMapper {
 
     @Mapping(source = "movie.movieNumber", target = "movieNumber")
     @Mapping(source = "user.userNumber", target = "userNumber")
-    GetMovieLogRes toGetMovieLogRes(Reservation reservation);
-    @IterableMapping(elementTargetType = GetMovieLogRes.class)
-    List<GetMovieLogRes> toGetMovieLogResList(Page<Reservation> reservationList);
+    MovieLogRes toGetMovieLogRes(Reservation reservation);
+    @IterableMapping(elementTargetType = MovieLogRes.class)
+    List<MovieLogRes> toGetMovieLogResList(Page<Reservation> reservationList);
 }

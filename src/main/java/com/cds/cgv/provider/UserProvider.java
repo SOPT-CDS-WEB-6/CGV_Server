@@ -1,7 +1,7 @@
 package com.cds.cgv.provider;
 
 import com.cds.cgv.common.status.ErrorStatus;
-import com.cds.cgv.controller.dto.response.GetMovieLogRes;
+import com.cds.cgv.controller.dto.response.MovieLogRes;
 import com.cds.cgv.controller.dto.response.GetMovieLogResList;
 import com.cds.cgv.controller.dto.response.PageInfoRes;
 import com.cds.cgv.domain.Movie;
@@ -37,19 +37,19 @@ public class UserProvider {
                         (PageRequest.of(page-1, size, Sort.by(Sort.Direction.DESC, "startDate")), userNumber);
 
         // entity to dto 매핑
-        List<GetMovieLogRes> getMovieLogResList = ReservationMapper.INSTANCE.toGetMovieLogResList(reservationPage);
+        List<MovieLogRes> movieLogResList = ReservationMapper.INSTANCE.toGetMovieLogResList(reservationPage);
 
         // 영화정보 매핑
-        for(GetMovieLogRes getMovieLogRes : getMovieLogResList){
-            Movie movie = movieRepository.findById(getMovieLogRes.getMovieNumber())
+        for(MovieLogRes movieLogRes : movieLogResList){
+            Movie movie = movieRepository.findById(movieLogRes.getMovieNumber())
                     .orElseThrow(
                             () -> new BaseException(ErrorStatus.DATABASE_ERROR)
                     );
-            getMovieLogRes.setRestProperties(movie.getTitle(), movie.getOriginTitle(), movie.getPosterLink());
+            movieLogRes.setRestProperties(movie.getTitle(), movie.getOriginTitle(), movie.getPosterLink());
         }
         // response dto로 매핑
         GetMovieLogResList result = new GetMovieLogResList(
-                getMovieLogResList,
+                movieLogResList,
                 new PageInfoRes(page, size, reservationPage.getTotalElements(), reservationPage.getTotalPages()));
 
         return result;
