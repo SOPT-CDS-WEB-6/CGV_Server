@@ -1,7 +1,7 @@
 package com.cds.cgv.controller;
 
 import com.cds.cgv.common.status.SuccessStatus;
-import com.cds.cgv.controller.dto.ApiResponseDTO;
+import com.cds.cgv.common.dto.ApiResponseDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,7 +1,8 @@
-package com.cds.cgv.controller.dto;
+package com.cds.cgv.common.dto;
 
 import com.cds.cgv.common.status.ErrorStatus;
 import com.cds.cgv.common.status.SuccessStatus;
+import com.cds.cgv.exception.BaseException;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,5 +22,9 @@ public class ApiResponseDTO<T> {
 
     public static ApiResponseDTO error(ErrorStatus errorStatus) {
         return new ApiResponseDTO(errorStatus.getHttpStatus().value(), errorStatus.getMessage());
+    }
+
+    public static ApiResponseDTO error(ErrorStatus errorStatus, String msg) {
+        return new ApiResponseDTO<>(errorStatus.getHttpStatus().value(), msg);
     }
 }
