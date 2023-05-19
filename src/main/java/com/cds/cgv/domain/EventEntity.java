@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -25,8 +26,8 @@ public class EventEntity {
     private String eventThumbnailLink;
 
     @NotNull
-    private LocalDate startedAt;
+    private LocalDateTime startedAt;
 
     @NotNull
-    private LocalDate endedAt;
+    private LocalDateTime endedAt;
 }
