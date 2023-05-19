@@ -2,7 +2,6 @@ package com.cds.cgv.infrastructure;
 
 import com.cds.cgv.domain.ReviewEntity;
 import com.cds.cgv.domain.ReviewResponseWrapper;
-import com.cds.cgv.domain.ReviewVO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

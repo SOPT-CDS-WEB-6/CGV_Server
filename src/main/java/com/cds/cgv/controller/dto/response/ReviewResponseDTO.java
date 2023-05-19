@@ -1,9 +1,7 @@
 package com.cds.cgv.controller.dto.response;
 
 
-import com.cds.cgv.domain.ReviewEntity;
 import com.cds.cgv.domain.ReviewResponseWrapper;
-import com.cds.cgv.domain.ReviewVO;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
