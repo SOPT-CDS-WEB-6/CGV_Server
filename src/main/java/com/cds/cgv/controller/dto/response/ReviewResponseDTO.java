@@ -4,6 +4,7 @@ package com.cds.cgv.controller.dto.response;
 import com.cds.cgv.domain.ReviewEntity;
 import com.cds.cgv.domain.ReviewResponseWrapper;
 import com.cds.cgv.domain.ReviewVO;
+import com.cds.cgv.util.DateFormatter;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,13 +20,13 @@ public class ReviewResponseDTO {
     private final String reviewerId;
     private final String reviewContent;
     private final Integer likes;
-    private final LocalDateTime createdAt;
+    private final String createdAt;
 
     public static ReviewResponseDTO from(ReviewResponseWrapper review){
         return ReviewResponseDTO.builder()
                 .reviewNumber(review.getReviewNumber())
                 .reviewContent(review.getReviewContent())
-                .createdAt(review.getCreatedAt())
+                .createdAt(DateFormatter.format(review.getCreatedAt()))
                 .likes(review.getLikes())
                 .reviewerId(review.getReviewerId())
                 .build();
