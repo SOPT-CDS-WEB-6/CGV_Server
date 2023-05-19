@@ -19,8 +19,9 @@ public class UserController {
     ApiResponseDTO<GetMovieLogResList> getMovieLog(
             @PathVariable Long userNumber,
             @RequestParam int page,
-            @RequestParam int size
+            @RequestParam int size,
+            @RequestParam(required = false) Integer year
     ){
-        return ApiResponseDTO.success(SuccessStatus.GET_SUCCESS, userProvider.getMovieLog(userNumber, page, size));
+        return ApiResponseDTO.success(SuccessStatus.GET_SUCCESS, userProvider.getMovieLog(userNumber, page, size, year));
     }
 }
