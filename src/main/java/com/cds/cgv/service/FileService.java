@@ -34,6 +34,10 @@ public class FileService {
             uploadFilePath += ("movie/" + fileType);
         } else if (fileType.equals("inquiry-attach-file")) {
             uploadFilePath += fileType;
+        } else if (fileType.equals("event")) {
+            uploadFilePath += fileType;
+        } else if (fileType.equals("still-cut")) {
+            uploadFilePath += fileType;
         } else if (fileType.equals("test")) {
             uploadFilePath += fileType;
         }

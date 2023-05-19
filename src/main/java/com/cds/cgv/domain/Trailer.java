@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 @Table(name = "trailer")
@@ -21,5 +20,6 @@ public class Trailer {
     private String trailerTitle;
     @Column(columnDefinition = "TEXT")
     private String thumbnailLink;
-    private Timestamp trailerReleasedAt;
+    @Column(columnDefinition = "date")
+    private String trailerReleasedAt;
 }
