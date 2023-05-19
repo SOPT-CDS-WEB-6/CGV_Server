@@ -22,13 +22,13 @@ public class Reservation {
     @JoinColumn(name = "movie_number", columnDefinition = "INT UNSIGNED")
     private Movie movie;
     @Column(columnDefinition = "Timestamp")
-    private Timestamp startDate;
+    private String startDate;
     @Column(columnDefinition = "Timestamp")
-    private Timestamp endDate;
+    private String endDate;
     private String theaterName;
     private int headcount;
     @Column(columnDefinition = "Tinyint")
     private boolean isReviewed;
     @Column(columnDefinition = "Timestamp")
-    private Timestamp reservatedAt;
+    private String reservatedAt;
 }

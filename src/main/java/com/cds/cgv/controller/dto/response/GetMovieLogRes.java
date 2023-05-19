@@ -13,7 +13,6 @@ public class GetMovieLogRes {
         this.originTitle = originTitle;
         this.posterLink = posterLink;
     }
-
     private Long userNumber;
     private Long movieNumber;
     private String title;

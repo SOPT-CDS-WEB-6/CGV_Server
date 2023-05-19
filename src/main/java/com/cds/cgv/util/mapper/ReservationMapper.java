@@ -6,6 +6,7 @@ import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface ReservationMapper {
     @Mapping(source = "user.userNumber", target = "userNumber")
     GetMovieLogRes toGetMovieLogRes(Reservation reservation);
     @IterableMapping(elementTargetType = GetMovieLogRes.class)
-    List<GetMovieLogRes> toGetMovieLogResList(List<Reservation> reservationList);
+    List<GetMovieLogRes> toGetMovieLogResList(Page<Reservation> reservationList);
 }
