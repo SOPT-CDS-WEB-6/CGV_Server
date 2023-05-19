@@ -17,6 +17,7 @@ public enum ErrorStatus {
     INVALID_USER_ID(HttpStatus.BAD_REQUEST, "잘못된 유저 id 정보 입니다."),
     INVALID_MOVIE_ID(HttpStatus.BAD_REQUEST, "잘못된 영화 id 정보 입니다."),
     INVALID_FILE_TYPE(HttpStatus.BAD_REQUEST, "fileType 값을 확인하세요."),
+    INVALID_INQUIRY_TYPE(HttpStatus.BAD_REQUEST, "문의 유형(type) 값을 확인하세요."),
 
     ;
 

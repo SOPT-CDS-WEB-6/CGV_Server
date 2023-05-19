@@ -28,9 +28,17 @@ public class InquiryService {
                 .orElseThrow(
                         () -> new BaseException(ErrorStatus.INVALID_USER_ID)
                 );
-
-        Inquiry inquirySaved = inquiryRepository.save(InquiryMapper.INSTANCE.toEntity(postInquiryReq));
-        return inquirySaved.getInquiryNumber();
+        if(postInquiryReq.getType().equals("문의")
+                || postInquiryReq.getType().equals("불만")
+                || postInquiryReq.getType().equals("칭찬")
+                || postInquiryReq.getType().equals("제안")
+                || postInquiryReq.getType().equals("분실물")
+        ) {
+            Inquiry inquirySaved = inquiryRepository.save(InquiryMapper.INSTANCE.toEntity(postInquiryReq));
+            return inquirySaved.getInquiryNumber();
+        } else {
+            throw new BaseException(ErrorStatus.INVALID_INQUIRY_TYPE);
+        }
     }
 
     @Transactional
