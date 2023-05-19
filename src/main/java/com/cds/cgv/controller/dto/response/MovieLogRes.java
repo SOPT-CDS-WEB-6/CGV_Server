@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class GetMovieLogRes {
+public class MovieLogRes {
     public void setRestProperties(String title, String originTitle, String posterLink){
         this.title = title;
         this.originTitle = originTitle;

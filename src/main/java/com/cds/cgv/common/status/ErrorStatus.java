@@ -15,6 +15,7 @@ public enum ErrorStatus {
     VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "요청 필드의 제약조건을 확인하세요."),
     INVALID_ID(HttpStatus.BAD_REQUEST, "잘못된 id 정보 입니다."),
     INVALID_USER_ID(HttpStatus.BAD_REQUEST, "잘못된 유저 id 정보 입니다."),
+    INVALID_MOVIE_ID(HttpStatus.BAD_REQUEST, "잘못된 영화 id 정보 입니다."),
     INVALID_FILE_TYPE(HttpStatus.BAD_REQUEST, "fileType 값을 확인하세요."),
 
     ;

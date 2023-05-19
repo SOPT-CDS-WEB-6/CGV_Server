@@ -3,6 +3,7 @@ package com.cds.cgv.controller;
 import com.cds.cgv.common.dto.ApiResponseDTO;
 import com.cds.cgv.common.status.SuccessStatus;
 import com.cds.cgv.controller.dto.response.GetMovieRes;
+import com.cds.cgv.controller.dto.response.GetReviewPointStatRes;
 import com.cds.cgv.provider.MovieProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,5 +27,17 @@ public class MovieController {
             @PathVariable Long movieNumber
     ){
         return ApiResponseDTO.success(SuccessStatus.GET_SUCCESS, movieProvider.getMovie(movieNumber));
+    }
+
+    /**
+     * 영화 리뷰 포인트 통계 가져오기
+     * @param movieNumber
+     * @return
+     */
+    @GetMapping("/{movieNumber}/review-statistics/score")
+    ApiResponseDTO<GetReviewPointStatRes> getReviewPointStat(
+            @PathVariable Long movieNumber
+    ){
+        return ApiResponseDTO.success(SuccessStatus.GET_SUCCESS, movieProvider.getReviewPointStat(movieNumber));
     }
 }
