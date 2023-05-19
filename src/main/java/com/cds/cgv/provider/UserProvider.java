@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -26,16 +27,24 @@ public class UserProvider {
     private final MovieRepository movieRepository;
     private final ReservationRepository reservationRepository;
 
-    public GetMovieLogResList getMovieLog(Long userNumber, int page, int size) {
+    public GetMovieLogResList getMovieLog(Long userNumber, int page, int size, Integer year) {
         // 유저 id 유효성 확인
         userRepository.findById(userNumber).orElseThrow(
                 () -> new BaseException(ErrorStatus.INVALID_USER_ID)
         );
         // 페이지 가져오기
-        Page<Reservation> reservationPage = reservationRepository
-                .findAllByUserNumber
-                        (PageRequest.of(page-1, size, Sort.by(Sort.Direction.DESC, "startDate")), userNumber);
+        Page<Reservation> reservationPage;
+        // year이 null이 아니면
+        if(!Objects.isNull(year)) {
+            reservationPage = reservationRepository
+                    .findAllByUserNumberByYear
+                            (PageRequest.of(page-1, size, Sort.by(Sort.Direction.DESC, "startDate")), userNumber, year);
+        } else {
+            reservationPage = reservationRepository
+                    .findAllByUserNumber
+                            (PageRequest.of(page-1, size, Sort.by(Sort.Direction.DESC, "startDate")), userNumber);
 
+        }
         // entity to dto 매핑
         List<MovieLogRes> movieLogResList = ReservationMapper.INSTANCE.toGetMovieLogResList(reservationPage);
 
