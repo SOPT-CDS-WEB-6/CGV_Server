@@ -15,9 +15,9 @@ name: GO-SOPT-Server CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dev" ]
 
 permissions:
   contents: read
